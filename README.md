@@ -44,12 +44,12 @@ cd multi-agent-control
 
 	- __Linux__ or __Mac__: 
 	```bash
-	conda create --name continuous_control python=3.6
+	conda create --name multi-agent-control python=3.6
 	source activate multi-agent-control
 	```
 	- __Windows__: 
 	```bash
-	conda create --name continuous_control python=3.6 
+	conda create --name multi-agent-control python=3.6 
 	activate multi-agent-control
 	```
 	
