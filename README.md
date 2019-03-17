@@ -1,6 +1,6 @@
 [//]: # (Image References)
 
-# # Collaboration and Competition
+# Collaboration and Competition
 
 ## Introduction
 
