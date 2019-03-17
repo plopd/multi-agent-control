@@ -3,11 +3,9 @@ import logging
 from collections import deque
 
 import numpy as np
-import torch
 from unityagents import UnityEnvironment
 
 from ddpg_agent import Agent
-from utils import plot_scores
 from utils import save_checkpoint
 
 
@@ -117,16 +115,17 @@ def train(
                 },
                 filename="checkpoint.pth",
             )
-            plot_scores(
-                scores=scores,
-                title=f"Avg score over {len(env_info.agents)} agents",
-                fname="avg_scores.png",
-                savefig=True,
-            )
-
         if np.mean(scores_deque) >= 0.5:
-            torch.save(agent.actor_local.state_dict(), "checkpoint_actor.pth")
-            torch.save(agent.critic_local.state_dict(), "checkpoint_critic.pth")
+            save_checkpoint(
+                state={
+                    "episode": i_episode,
+                    "actor_state_dict": agent.actor_local.state_dict(),
+                    "critic_state_dict": agent.critic_local.state_dict(),
+                    "scores_deque": scores_deque,
+                    "scores": scores,
+                },
+                filename="checkpoint_solved.pth",
+            )
             print(
                 "\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}".format(
                     i_episode - 100, np.mean(scores_deque)
