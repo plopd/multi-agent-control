@@ -156,14 +156,14 @@ def main():
         "-n_episodes",
         "--number_episodes",
         help="Number of episodes to train.",
-        default=2500,
+        default=3000,
         type=int,
     )
     parser.add_argument(
         "-max_t",
         "--maximum_timesteps",
         help="Maximum number of timesteps within one episode.",
-        default=1000,
+        default=2500,
         type=int,
     )
     parser.add_argument(
